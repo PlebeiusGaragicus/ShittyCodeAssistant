@@ -111,9 +111,9 @@ def main():
     combined_ignores = [os.path.normpath(ignore) for ignore in combined_ignores]
 
     # Print the combined ignore list
-    print("Ignoring files:")
-    for item in combined_ignores:
-        print(f" - {item}")
+    # print("Ignoring files:")
+    # for item in combined_ignores:
+    #     print(f" - {item}")
 
     # Print the directory tree
     print("\nDirectory Tree:")
