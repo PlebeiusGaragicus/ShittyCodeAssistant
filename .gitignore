@@ -2,4 +2,4 @@ venv/
 __pycache__/
 shitty_code_assistant.egg-info/
 
-bad/
+output

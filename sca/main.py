@@ -6,7 +6,7 @@ import os
 
 # Define a hard-coded list of files/folders to ignore (make sure these are in a normalized format)
 additional_ignores = [
-    '.git/'
+    '.git',
     'venv/',
     '__pycache__/',
     '.DS_Store',
