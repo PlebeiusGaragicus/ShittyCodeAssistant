@@ -12,6 +12,7 @@ additional_ignores = [
     '.DS_Store',
     'README.md',
     'LICENSE',
+    'requirements.txt',
 ]
 
 def find_gitignore(directory):
