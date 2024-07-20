@@ -6,11 +6,12 @@ import os
 
 # Define a hard-coded list of files/folders to ignore (make sure these are in a normalized format)
 additional_ignores = [
-    'README.md',
-    'LICENSE',
+    '.git/'
     'venv/',
     '__pycache__/',
-    '.git/'
+    '.DS_Store',
+    'README.md',
+    'LICENSE',
 ]
 
 def find_gitignore(directory):
@@ -68,9 +69,13 @@ def print_file_content(file_path, current_directory):
     # print(f"---\n{file_path}\n```{language}")
     # print(f"\n---\n{file_path}\n```{language}")
     print(f"\n---\nFile: `{relative_path}`\n```{language}")
-    with open(file_path, 'r') as file:
-        content = file.read()
-        print(content)
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            print(content)
+    except Exception as e:
+        print(f"Error reading file: {file_path}\n{e}")
+
     print("```\n")
 
 def print_directory_tree(directory, ignore_list, prefix=''):
@@ -97,7 +102,7 @@ def run():
         # Step 2: Read and parse the .gitignore file
         gitignore_ignores = parse_gitignore(gitignore_path)
     else:
-        print("No .gitignore file found.")
+        # print("No .gitignore file found.")
         gitignore_ignores = []
 
     # Print the items found in .gitignore
@@ -120,8 +125,9 @@ def run():
     #     print(f" - {item}")
 
     # Print the directory tree
-    print("\nDirectory Tree:")
+    print("\nDirectory Tree:\n```\n")
     print_directory_tree(current_directory, combined_ignores)
+    print("```\n")
 
     # Step 5: Get all files in the current directory, excluding ignored ones
     remaining_files = get_all_files(current_directory, combined_ignores)
